@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Bay Tours – Private Boat Tours, Vlorë Albania</title>
+<meta name="description" content="Experience the Albanian Riviera with Blue Bay Tours. Private boat tours from Vlorë to Haxhi Ali Cave, Sazan Island, Karaburun Peninsula and hidden beaches.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== CSS VARIABLES ===== */
+  :root {
+    --pearl: #FFFFFF;
+    --sand: #FFFFFF;
+    --navy: #0077B6;
+    --gold: #C5A028;
+    --gold-light: #E0C158;
+    --white: #FFFFFF;
+    --black: #000000;
+    --white-dim: rgba(0, 0, 0, 0.7);
+    --navy-dim: rgba(0, 119, 182, 0.8);
+    --glass: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(197, 160, 40, 0.3);
+    --font-main: 'Outfit', sans-serif;
+    --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* ===== RESET ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--font-main);
+    font-weight: 400;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ===== CUSTOM CURSOR ===== */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
+    opacity: 0.5;
+  }
+  body:hover .cursor, body:hover .cursor-ring { opacity: 1; }
+
+  /* ===== LOADER REMOVED ===== */
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all var(--transition);
+  }
+  nav.scrolled {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 0.9rem 4rem;
+  }
+  nav.hidden { transform: translateY(-100%); }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    color: var(--white);
+  }
+  .nav-logo-icon {
+    font-size: 1.6rem;
+    animation: bob 3s ease-in-out infinite;
+  }
+  .nav-logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .nav-logo-text span { color: var(--gold); }
+  .nav-logo-text { color: var(--white); }
+  nav.scrolled .nav-logo-text { color: var(--navy); }
+  nav.scrolled .hamburger span { background: var(--navy); }
+  nav.scrolled .nav-links a { color: var(--navy); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition);
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width var(--transition);
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2px;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.15em;
+    transition: all var(--transition) !important;
+  }
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--navy) !important;
+  }
+  .nav-cta::after { display: none !important; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+  .hamburger.active span { background: var(--navy) !important; }
+  .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    transition: color var(--transition);
+    text-transform: uppercase;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* ===== HERO ===== */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(0, 119, 182, 0.4) 0%, rgba(0, 119, 182, 0.7) 70%, var(--white) 100%),
+      url('tour2 gallerry.jpeg') center/cover no-repeat;
+    transform: scale(1.05);
+    transition: transform 0.1s linear;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 2rem;
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.8s 0.15s ease forwards;
+    opacity: 0;
+    color: var(--white);
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease forwards;
+    opacity: 0;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 0.9rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all var(--transition);
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(201,168,76,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(245,240,232,0.3);
+    padding: 0.9rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all var(--transition);
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white-dim);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeIn 1s 1s forwards;
+    opacity: 0;
+    z-index: 2;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { padding: 7rem 4rem; position: relative; z-index: 2; }
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ===== REVEAL ANIMATIONS ===== */
+  /* Only hide elements if JS is active to prevent 'disappearing' content */
+  .js-enabled .reveal {
+    opacity: 0;
+    will-change: transform, opacity, filter, clip-path;
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js-enabled .reveal-up { transform: translateY(50px); }
+  .js-enabled .reveal-down { transform: translateY(-50px); }
+  .js-enabled .reveal-left { transform: translateX(-50px); }
+  .js-enabled .reveal-right { transform: translateX(50px); }
+  .js-enabled .reveal-scale { transform: scale(0.95); }
+  .js-enabled .reveal-blur { filter: blur(8px); }
+  
+  /* Mask Reveal for Titles */
+  .mask-wrap { overflow: hidden; display: block; }
+  .js-enabled .reveal-mask { transform: translateY(100%); }
+
+  /* Image Reveal (Clip Path) - Shutter effect */
+  .js-enabled .reveal-clip { clip-path: inset(100% 0 0 0); }
+  
+  .reveal.visible {
+    opacity: 1 !important;
+    transform: translate(0) scale(1) !important;
+    filter: blur(0) !important;
+    clip-path: inset(0 0 0 0) !important;
+  }
+
+  /* Stagger Delays */
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* Stagger logic via JS */
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+  .float-anim { animation: float 6s ease-in-out infinite; }
+
+  /* ===== ABOUT ===== */
+  /* ===== ABOUT ===== */
+  #about { background: var(--white); padding-top: 8rem; }
+
+  .about-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+
+
+
+  .about-text p {
+    color: var(--white-dim);
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--glass-border);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+
+  /* ===== TOURS ===== */
+  /* ===== TOURS ===== */
+  #tours { background: var(--white); border-top: 1px solid var(--glass-border); }
+
+  .tours-intro {
+    max-width: 600px;
+    margin-bottom: 4rem;
+  }
+  .tours-intro p { color: var(--white-dim); line-height: 1.8; }
+
+  .tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .tour-card {
+    background: var(--white);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    animation: bob 4s ease-in-out infinite;
+    transition: all var(--transition);
+  }
+  .tour-card:nth-child(2) { animation-delay: -2s; }
+  .tour-card:hover {
+    transform: translateY(-8px) !important;
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,48,73,0.1);
+    border-color: var(--gold);
+  }
+
+  .tour-img-wrap {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--white);
+  }
+  .tour-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .tour-card:hover .tour-img-wrap img { transform: scale(1.1); }
+
+  .tour-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .tour-img-wrap:hover .tour-overlay { opacity: 1; }
+  .tour-overlay span {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid white;
+    padding: 0.8rem 1.5rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .tour-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: var(--white);
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 100px;
+  }
+
+  .tour-body { padding: 2rem; }
+
+  .tour-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .tour-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .tour-title {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .tour-desc {
+    color: var(--white-dim);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .tour-highlights {
+    list-style: none;
+    margin-bottom: 1.8rem;
+  }
+  .tour-highlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.83rem;
+    color: var(--white-dim);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+  }
+  .tour-highlights li:last-child { border-bottom: none; }
+  .tour-highlights li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 0.45rem;
+    margin-top: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .tour-times {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .tour-time-badge {
+    background: rgba(10,122,143,0.15);
+    border: 1px solid rgba(10,122,143,0.3);
+    color: #4fc3d7;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+  }
+
+  .tour-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .tour-includes {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .include-pill {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--gold);
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  /* ===== GALLERY ===== */
+  /* ===== GALLERY ===== */
+  #gallery { background: var(--white); border-top: 1px solid var(--glass-border); }
+
+  /* ===== GALLERY SLIDER ===== */
+  .gallery-container {
+    position: relative;
+    margin-top: 3rem;
+  }
+  .gallery-viewport {
+    overflow: hidden;
+    padding: 2rem 0;
+  }
+  .gallery-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (max-width: 900px) {
+    .gallery-track { gap: 1.5rem; }
+  }
+  .gallery-item {
+    flex: 0 0 450px;
+    height: 550px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease;
+  }
+  @media (max-width: 900px) {
+    .gallery-item { flex: 0 0 85vw; height: 450px; }
+  }
+  @media (max-width: 500px) {
+    .gallery-item { height: 400px; }
+  }
+  .gallery-item:hover { transform: translateY(-10px); }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s var(--transition);
+  }
+  .gallery-item:hover img { transform: scale(1.08); }
+
+  .gallery-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .gal-btn {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: var(--white);
+    color: var(--navy);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+  .gal-btn:hover { background: var(--gold); color: var(--white); transform: scale(1.1) translateY(-3px); box-shadow: 0 15px 30px rgba(197, 160, 40, 0.2); }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 2px;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+  }
+  .lightbox img.zoomed {
+    transform: scale(1.5);
+    cursor: zoom-out;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: 1px solid var(--glass-border);
+    color: var(--navy);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+  .lightbox-close:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+  /* ===== REVIEWS ===== */
+  /* ===== REVIEWS ===== */
+  #reviews { background: var(--white); border-top: 1px solid var(--glass-border); }
+
+  .reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  .reviews-score {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .score-num {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .score-stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 0.1em; }
+  .score-count { color: var(--white-dim); font-size: 0.8rem; margin-top: 0.3rem; }
+
+  /* ===== REVIEWS MARQUEE ===== */
+  .reviews-track-wrap {
+    overflow: hidden;
+    padding: 2rem 0;
+    position: relative;
+  }
+  .reviews-track-wrap::before,
+  .reviews-track-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .reviews-track-wrap::before { left: 0; background: linear-gradient(to right, var(--sand), transparent); }
+  .reviews-track-wrap::after { right: 0; background: linear-gradient(to left, var(--sand), transparent); }
+
+  .reviews-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+  .reviews-track:hover { animation-play-state: paused; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .review-card {
+    width: 400px;
+    background: var(--white);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    padding: 2.5rem;
+    transition: all var(--transition);
+  }
+  .review-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+  .review-text { color: var(--navy); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; font-weight: 400; }
+  .review-author { display: flex; align-items: center; gap: 1rem; }
+  .review-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+  .review-name { font-size: 0.9rem; font-weight: 600; }
+  .review-date { font-size: 0.75rem; color: var(--navy-dim); }
+
+  /* ===== FAQ ===== */
+  #faq { background: var(--white); }
+  .faq-grid { max-width: 800px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { border-bottom: 1px solid var(--glass-border); }
+  .faq-trigger {
+    width: 100%;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--navy);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .faq-icon {
+    font-size: 1.2rem;
+    transition: transform 0.4s ease;
+  }
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    color: var(--navy-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .faq-item.active .faq-content { max-height: 200px; padding-bottom: 1.5rem; }
+  .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+  .reviews-nav {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .rev-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    color: var(--white);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+  .rev-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--white); border-top: 1px solid var(--glass-border); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+  }
+
+  .contact-info { text-align: center; max-width: 800px; margin: 0 auto; }
+  .contact-info p {
+    color: var(--white-dim);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .contact-items { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2rem; 
+    text-align: center;
+  }
+  @media (max-width: 900px) {
+    .contact-items { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    color: var(--gold);
+    background: #F8F9FA;
+  }
+  .contact-item-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 0.3rem; font-weight: 600; }
+  .contact-item-val { font-size: 1.05rem; font-weight: 500; color: var(--navy); }
+  .contact-item-val a { color: var(--navy); text-decoration: none; transition: color var(--transition); font-weight: 700; }
+  .contact-item-val a:hover { color: var(--gold); }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #25d366;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-top: 2.5rem;
+    transition: all var(--transition);
+    box-shadow: 0 10px 20px rgba(37,211,102,0.2);
+  }
+  .wa-btn:hover { background: #1db954; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37,211,102,0.3); }
+
+  /* ===== STICKY FOOTER ===== */
+  .sticky-footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    padding: 1rem 1.5rem;
+    display: none;
+    justify-content: center;
+    z-index: 1000;
+    border-top: 1px solid var(--glass-border);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+  }
+  .sticky-wa {
+    width: 100%;
+    background: #25d366;
+    color: white;
+    padding: 0.9rem;
+    border-radius: 4px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--white);
+    border-top: 1px solid var(--glass-border);
+    padding: 5rem 4rem 8rem; /* Extra padding for mobile sticky footer */
+    position: relative;
+    z-index: 2;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+  }
+  @media (max-width: 900px) {
+    .footer-inner { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-socials { display: flex; gap: 1.2rem; margin-top: 1.5rem; }
+  .social-link {
+    width: 44px; height: 44px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all var(--transition);
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+
+  .footer-copy { color: var(--white-dim); font-size: 0.8rem; margin-top: 2rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 2rem; width: 100%; grid-column: 1 / -1; }
+  .footer-copy a { color: var(--navy); font-weight: 600; text-decoration: none; }
+
+  /* ===== FLOATING WAVE DIVIDER ===== */
+  .wave-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .wave-divider svg { display: block; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes bob {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.5; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    nav.scrolled { padding: 0.9rem 2rem; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 5rem 2rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-img-accent, .about-badge { display: none; }
+    .tours-grid { grid-template-columns: 1fr; }
+    .gallery-grid { columns: 2; }
+    footer { padding: 2.5rem 2rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .reviews-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .review-card { min-width: 280px; }
+  }
+  @media (max-width: 600px) {
+    .gallery-grid { columns: 1; }
+    .hero-title { font-size: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Loader Removed -->
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#tours" onclick="closeMobile()">Tours</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()">Book Now</a>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-icon">⚓</span>
+    <span class="nav-logo-text">Blue <span>Bay</span> Tours</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tours">Tours</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now ⚓</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <div class="hero-badge reveal reveal-up reveal-blur">⭐ 5.0 Rated (106 Reviews)</div>
+    <div class="mask-wrap">
+      <h1 class="hero-title reveal reveal-mask">The Most Exclusive Way<br>to See the <em>Riviera</em>.</h1>
+    </div>
+    <p class="hero-sub reveal reveal-up reveal-delay-2">Private boat tours into the wild turquoise of the Ionian Sea.<br>Discover hidden caves, untouched beaches, and the legendary Karaburun Peninsula.</p>
+    <div class="hero-btns reveal reveal-up reveal-delay-3">
+      <a href="#tours" class="btn-primary">Explore Tours ⚓</a>
+      <a href="#contact" class="btn-outline">Book Now</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-text">
+        <span class="section-label reveal reveal-left">The Blue Bay Story</span>
+        <div class="mask-wrap">
+          <h2 class="section-title reveal reveal-mask">Crafting <em>Memories</em><br>on the Water Since 2012</h2>
+        </div>
+        <p class="reveal reveal-up reveal-delay-1">What started as a single small boat and a passion for the sea has grown into Vlorë's most trusted private boat tour service.</p>
+        <p class="reveal reveal-delay-2">Your captain Gary brings a personal touch to every journey — with fluent English, local knowledge, and a genuine passion for the sea. You'll discover hidden coves, swim in crystalline waters, and experience Albania's wild coast away from the crowds.</p>
+        <p class="reveal reveal-delay-2">From the mythical Haxhi Ali Pirate's Cave to the military secrets of Sazan Island — every tour is a story waiting to be told.</p>
+        <div class="about-stats reveal reveal-delay-3">
+          <div>
+            <span class="stat-num">106</span>
+            <span class="stat-label">5-Star Reviews</span>
+          </div>
+          <div>
+            <span class="stat-num">10</span>
+            <span class="stat-label">Max Guests</span>
+          </div>
+          <div>
+            <span class="stat-num">2</span>
+            <span class="stat-label">Unique Routes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE DIVIDER -->
+<div class="wave-divider" style="background: var(--pearl);">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="60">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--sand)"/>
+  </svg>
+</div>
+
+<!-- TOURS -->
+<section id="tours" class="reveal">
+  <div class="container">
+    <div class="tours-intro">
+      <span class="section-label reveal reveal-left">Private Tours</span>
+      <div class="mask-wrap">
+        <h2 class="section-title reveal reveal-mask">Premium<br><em>Private Routes</em></h2>
+      </div>
+      <p class="reveal reveal-up reveal-delay-2">Departing from Vlorë. All tours are 100% private — just you and your group, with your personal captain. Choose your adventure.</p>
+    </div>
+
+    <div class="tours-grid">
+      <!-- Tour 1 -->
+      <div class="tour-card reveal reveal-up">
+        <div class="tour-img-wrap" onclick="location.href='haxhi-ali-tour.html'">
+          <img src="tour1 display pic.jpeg" alt="Haxhi Ali Cave & Karaburun Peninsula" class="reveal-clip reveal">
+          <div class="tour-overlay">
+            <span>View Tour Details ⚓</span>
+          </div>
+          <div class="tour-badge">4 Hours</div>
+        </div>
+        <div class="tour-info" style="padding: 2rem;">
+          <h3 class="tour-title">Haxhi Ali Cave &<br>Karaburun Peninsula</h3>
+          <p class="tour-desc">A perfect half-day escape to the legendary Pirate's Cave and the pristine shores of Karaburun.</p>
+          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">📍</span> Haxhi Ali Cave (15 min stop)</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🏖️</span> Shën Vasil & Shën Jan Beaches</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🔥</span> Final Stop: Zhanpovel Beach (2 hrs)</li>
+          </ul>
+          <div class="tour-footer">
+            <div class="tour-inclusions">
+              <span title="Drinking Water">💧</span>
+              <span title="Snorkeling Mask">🤿</span>
+            </div>
+            <a href="haxhi-ali-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 2 -->
+      <div class="tour-card reveal reveal-up">
+        <div class="tour-img-wrap" onclick="location.href='sazan-island-tour.html'">
+          <img src="tour2 display pic.jpeg" alt="Sazan Island & Karaburun Peninsula" class="reveal-clip reveal">
+          <div class="tour-overlay">
+            <span>View Tour Details ⚓</span>
+          </div>
+          <div class="tour-badge">5 Hours</div>
+        </div>
+        <div class="tour-info" style="padding: 2rem;">
+          <h3 class="tour-title">Sazan Island &<br>Karaburun Peninsula</h3>
+          <p class="tour-desc">Explore the mysterious Sazan Island and the hidden gems of the Karaburun coast.</p>
+          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🏝️</span> Sazan Island (St. Nicholas Beach)</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🕳️</span> Haxhi Ali Cave (15 min stop)</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🌊</span> Gjeneralit, Shën Jan & Vasil Beaches</li>
+          </ul>
+          <div class="tour-footer">
+            <div class="tour-inclusions">
+              <span title="Drinking Water">💧</span>
+              <span title="Snorkeling Mask">🤿</span>
+            </div>
+            <a href="sazan-island-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 3 -->
+      <div class="tour-card reveal reveal-up">
+        <div class="tour-img-wrap" onclick="location.href='dafina-bay-tour.html'">
+          <img src="tour1 gallery.jpeg" alt="Dafina Bay & Karaburun Peninsula" class="reveal-clip reveal">
+          <div class="tour-overlay">
+            <span>View Tour Details ⚓</span>
+          </div>
+          <div class="tour-badge">6 Hours</div>
+        </div>
+        <div class="tour-info" style="padding: 2rem;">
+          <h3 class="tour-title">Dafina Bay &<br>Karaburun Peninsula</h3>
+          <p class="tour-desc">A deep dive into the most secluded bays of the peninsula, including the magical Dafina Bay.</p>
+          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">💎</span> Dafina Bay (1 hour stop)</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🛶</span> Varka Bay & Secret Caves</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">👥</span> Capacity: Max 10 Persons</li>
+          </ul>
+          <div class="tour-footer">
+            <div class="tour-inclusions">
+              <span title="Drinking Water">💧</span>
+              <span title="Snorkeling Mask">🤿</span>
+            </div>
+            <a href="dafina-bay-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 4 -->
+      <div class="tour-card reveal reveal-up">
+        <div class="tour-img-wrap" onclick="location.href='grama-bay-tour.html'">
+          <img src="tour2 gallerry.jpeg" alt="Grama Bay Full Trip" class="reveal-clip reveal">
+          <div class="tour-overlay">
+            <span>View Tour Details ⚓</span>
+          </div>
+          <div class="tour-badge">7 Hours</div>
+        </div>
+        <div class="tour-info" style="padding: 2rem;">
+          <h3 class="tour-title">Grama Bay &<br>Karaburun Full Trip</h3>
+          <p class="tour-desc">The ultimate adventure. Visit 12+ locations including the historic Grama Bay and Blue Cave.</p>
+          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🏛️</span> Grama Bay (2-hour stop)</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🔵</span> Blue Cave (30 min stop)</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">💶</span> €700 Private / €65 Group</li>
+          </ul>
+          <div class="tour-footer">
+            <div class="tour-inclusions">
+              <span title="Drinking Water">💧</span>
+              <span title="Soft Drinks">🥤</span>
+              <span title="Sandwich">🥪</span>
+              <span title="Snorkeling Mask">🤿</span>
+            </div>
+            <a href="grama-bay-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour 5 (Sunset) -->
+      <div class="tour-card reveal reveal-up">
+        <div class="tour-img-wrap" onclick="location.href='sunset-tour.html'">
+          <img src="sunset.jpeg" alt="Sunset Boat Tour" class="reveal-clip reveal">
+          <div class="tour-overlay">
+            <span>View Tour Details ⚓</span>
+          </div>
+          <div class="tour-badge">2 Hours</div>
+        </div>
+        <div class="tour-info" style="padding: 2rem;">
+          <h3 class="tour-title">Sunset Boat Tour</h3>
+          <p class="tour-desc">Experience the magical Golden Hour in the open sea. A romantic and peaceful evening escape.</p>
+          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🌅</span> Golden Hour Open Sea Stop</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">☠️</span> Haxhi Ali Cave (15 min)</li>
+            <li><span style="color: var(--gold); margin-right: 0.5rem;">🍹</span> Aperol Spritz & Water Included</li>
+          </ul>
+          <div class="tour-footer">
+            <div class="tour-inclusions">
+              <span title="Drinking Water">💧</span>
+              <span title="Aperol Spritz">🍹</span>
+            </div>
+            <a href="sunset-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="background: var(--deep);">
+  <div class="container">
+    <span class="section-label reveal reveal-left">Guest Moments</span>
+    <div class="mask-wrap">
+      <h2 class="section-title reveal reveal-mask">Guest <em>Gallery</em></h2>
+    </div>
+    <div class="gallery-container">
+      <div class="gallery-viewport" id="galViewport">
+        <div class="gallery-track" id="galTrack">
+          <div class="gallery-item reveal reveal-scale" onclick="openLightbox(this)">
+            <img src="tour1 gallery.jpeg" alt="Boat tour">
+          </div>
+          <div class="gallery-item reveal reveal-scale reveal-delay-1" onclick="openLightbox(this)">
+            <img src="tour1 galleryy.jpeg" alt="Sea cave">
+          </div>
+          <div class="gallery-item reveal reveal-scale reveal-delay-2" onclick="openLightbox(this)">
+            <img src="tour1 galleryyyy.jpeg" alt="Albanian beach">
+          </div>
+          <div class="gallery-item reveal reveal-scale reveal-delay-3" onclick="openLightbox(this)">
+            <img src="tour2 gallerry.jpeg" alt="Ionian sea">
+          </div>
+          <div class="gallery-item reveal reveal-scale reveal-delay-4" onclick="openLightbox(this)">
+            <img src="tour2 gallery (2).jpeg" alt="Crystal waters">
+          </div>
+          <div class="gallery-item reveal reveal-scale reveal-delay-5" onclick="openLightbox(this)">
+            <img src="tour2 gallery.jpeg" alt="Beach">
+          </div>
+        </div>
+      </div>
+      
+      <div class="gallery-nav reveal reveal-up">
+        <button class="gal-btn" onclick="slideGallery(-1)" aria-label="Previous">←</button>
+        <button class="gal-btn" onclick="slideGallery(1)" aria-label="Next">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <div>
+        <span class="section-label reveal reveal-left">What People Say</span>
+        <div class="mask-wrap">
+          <h2 class="section-title reveal reveal-mask">Unmatched<br><em>Experiences</em></h2>
+        </div>
+      </div>
+      <div class="reviews-score reveal">
+        <div>
+          <div class="score-num">5.0</div>
+          <div class="score-stars">★★★★★</div>
+          <div class="score-count">106 Google Reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-track-wrap">
+      <div class="reviews-track" id="reviewsTrack">
+        <!-- Original reviews -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Took a boat tour in June, and I've gotta shout out our boat driver and guide, Gary. Absolutely incredible experience — he knew every hidden spot along the coast."</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://i.pravatar.cc/80?img=11" alt="Bryce">
+            <div><div class="review-name">Bryce</div><div class="review-date">8 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"We had an amazing day! The captain was truly kind, professional, and spoke perfect English. He offered refreshing drinks and showed us spots most tourists never see."</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://i.pravatar.cc/80?img=5" alt="Nora">
+            <div><div class="review-name">Nora Alimby</div><div class="review-date">7 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Wonderful boat tour with Gary! He was incredibly friendly, helpful, and took the time to show us the most beautiful spots. Passionate about what he does."</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://i.pravatar.cc/80?img=9" alt="Elmedina">
+            <div><div class="review-name">Elmedina Ramadani</div><div class="review-date">9 months ago</div></div>
+          </div>
+        </div>
+        <!-- Duplicates for seamless loop -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Took a boat tour in June, and I've gotta shout out our boat driver and guide, Gary. Absolutely incredible experience — he knew every hidden spot along the coast."</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://i.pravatar.cc/80?img=11" alt="Bryce">
+            <div><div class="review-name">Bryce</div><div class="review-date">8 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"We had an amazing day! The captain was truly kind, professional, and spoke perfect English. He offered refreshing drinks and showed us spots most tourists never see."</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://i.pravatar.cc/80?img=5" alt="Nora">
+            <div><div class="review-name">Nora Alimby</div><div class="review-date">7 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Wonderful boat tour with Gary! He was incredibly friendly, helpful, and took the time to show us the most beautiful spots. Passionate about what he does."</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://i.pravatar.cc/80?img=9" alt="Elmedina">
+            <div><div class="review-name">Elmedina Ramadani</div><div class="review-date">9 months ago</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-label reveal">Common Questions</span>
+    <h2 class="section-title reveal reveal-delay-1">Frequently Asked<br><em>Details</em></h2>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <button class="faq-trigger" onclick="toggleFaq(this)">How do I book a tour? <span class="faq-icon">+</span></button>
+        <div class="faq-content">You can book directly via our website form or by clicking the WhatsApp button. We'll confirm your reservation and departure time instantly.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-trigger" onclick="toggleFaq(this)">What should we bring? <span class="faq-icon">+</span></button>
+        <div class="faq-content">We recommend bringing sunscreen, towels, swimwear, and a camera. We provide cold water and snorkeling gear on board.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-trigger" onclick="toggleFaq(this)">Is the tour private? <span class="faq-icon">+</span></button>
+        <div class="faq-content">Yes, all our tours are 100% private. The boat and captain are exclusively for your group (up to 10 people).</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-trigger" onclick="toggleFaq(this)">What about the weather? <span class="faq-icon">+</span></button>
+        <div class="faq-content">If conditions are unsafe for sailing, we will offer to reschedule your tour or provide a full refund if you've made a deposit.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal" style="padding: 10rem 0;">
+  <div class="container" style="text-align: center;">
+    <div class="contact-info">
+      <span class="section-label reveal reveal-up">Get in Touch</span>
+      <div class="mask-wrap">
+        <h2 class="section-title reveal reveal-mask">Ready for your<br><em>Private Adventure?</em></h2>
+      </div>
+      <p class="reveal reveal-up" style="max-width: 800px; margin: 0 auto 4rem; color: var(--white-dim); font-size: 1.15rem; line-height: 1.8;">Contact us directly via WhatsApp, Email, or visit us in Vlorë. We are available 24/7 to help you plan your perfect boat trip.</p>
+      
+      <div class="contact-items reveal reveal-up" style="margin-bottom: 4rem;">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-label">Location</div>
+          <div class="contact-item-val">Kulla Ferhati, Vlorë</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-item-label">Email Us</div>
+          <div class="contact-item-val"><a href="mailto:bluebaytoursvlore@gmail.com">bluebaytours@gmail.com</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-item-label">WhatsApp</div>
+          <div class="contact-item-val"><a href="tel:+355692242662">+355 69 224 2662</a></div>
+        </div>
+      </div>
+
+      <div class="wa-btn-wrap reveal reveal-up">
+        <a href="https://wa.me/355692242662?text=Hello!%20I'm%20interested%20in%20booking%20a%20private%20tour." class="wa-btn">
+          Chat on WhatsApp ⚓
+        </a>
+      </div>
+    </div>
+
+    <div class="map-wrap reveal" style="margin-top: 6rem; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1);">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.5!2d19.483!3d40.4486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDI2JzU1LjAiTiAxOcKwMjgnNTguOCJF!5e0!3m2!1sen!2sal!4v1"
+        allowfullscreen=""
+        width="100%"
+        height="450"
+        style="border:0;"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Blue Bay Tours Location">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner" style="text-align: center;">
+    <div class="footer-col" style="margin: 0 auto;">
+      <div class="footer-logo">Blue <span>Bay</span> Tours</div>
+      <p style="color: var(--white-dim); font-size: 0.9rem; max-width: 300px; line-height: 1.8; margin: 0 auto 1.5rem;">Experience the hidden gems of the Albanian Riviera with Vlorë's most trusted private boat tour service since 2012.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/355692242662" target="_blank" class="social-link" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://maps.app.goo.gl/355692242662" target="_blank" class="social-link" title="Google Maps">📍</a>
+        <a href="https://www.instagram.com/" class="social-link" title="Instagram">📸</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 style="color: var(--navy); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; font-weight: 700;">Explore</h4>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem;">
+        <li><a href="#about" style="color: var(--white-dim); text-decoration: none; font-size: 0.9rem;">The Story</a></li>
+        <li><a href="#tours" style="color: var(--white-dim); text-decoration: none; font-size: 0.9rem;">Private Tours</a></li>
+        <li><a href="#gallery" style="color: var(--white-dim); text-decoration: none; font-size: 0.9rem;">Gallery</a></li>
+        <li><a href="#reviews" style="color: var(--white-dim); text-decoration: none; font-size: 0.9rem;">Guest Reviews</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 style="color: var(--navy); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; font-weight: 700;">Contact</h4>
+      <p style="color: var(--white-dim); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+        Kulla Ferhati, Rruga Mato Robi,<br>Vlorë, Albania
+      </p>
+      <a href="tel:+355692242662" style="color: var(--navy); text-decoration: none; font-weight: 700; font-size: 1rem;">+355 69 224 2662</a>
+    </div>
+    <div class="footer-copy">© 2026 Blue Bay Tours · Crafted for <em>Memories</em> · <a href="tel:+355692242662">Book Your Trip ⚓</a></div>
+  </div>
+</footer>
+
+<!-- STICKY FOOTER -->
+<div class="sticky-footer">
+  <a href="https://wa.me/355692242662" class="sticky-wa">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp Us
+  </a>
+</div>
+
+<script>
+  // Loader removed
+
+  // ===== CURSOR =====
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  function animateRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); }
+  animateRing();
+
+  // ===== NAVBAR & MOBILE =====
+  const navbar = document.getElementById('navbar');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const hamburger = document.getElementById('hamburger');
+  let lastScroll = 0;
+
+  function toggleMobile() {
+    mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('active');
+  }
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('active');
+  }
+
+  // ===== REVEAL ON SCROLL =====
+  document.documentElement.classList.add('js-enabled');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        revealElement(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  function revealElement(el) {
+    el.classList.add('visible');
+    if (el.classList.contains('reveal-grid') || el.classList.contains('tours-grid') || el.classList.contains('gallery-grid')) {
+      Array.from(el.children).forEach((child, i) => {
+        setTimeout(() => {
+          child.classList.add('visible');
+          child.style.opacity = '1';
+          child.style.transform = 'translate(0) scale(1)';
+          child.style.clipPath = 'inset(0 0 0 0)';
+        }, i * 150);
+      });
+    }
+  }
+
+  // Initial Check & Observe
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => {
+    // If already in viewport on load
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      revealElement(el);
+    } else {
+      io.observe(el);
+    }
+  });
+
+  // Observe grids specifically
+  document.querySelectorAll('.tours-grid, .gallery-grid').forEach(el => io.observe(el));
+
+  // ===== PARALLAX & SCROLL =====
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    // Navbar
+    if (s > 80) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
+    if (s > lastScroll && s > 200) navbar.classList.add('hidden'); else navbar.classList.remove('hidden');
+    lastScroll = s;
+
+    // Hero Parallax
+    const hBg = document.getElementById('heroBg');
+    if (hBg) hBg.style.transform = `scale(1.05) translateY(${s * 0.4}px)`;
+
+    // General Parallax
+    document.querySelectorAll('.parallax-el').forEach(el => {
+      const speed = el.getAttribute('data-speed') || 0.1;
+      el.style.transform = `translateY(${s * speed}px)`;
+    });
+  });
+
+  // ===== GALLERY LIGHTBOX =====
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    const lbImg = document.getElementById('lightboxImg');
+    lbImg.src = img.src;
+    lbImg.classList.remove('zoomed');
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('lightboxImg').onclick = function(e) {
+    e.stopPropagation();
+    this.classList.toggle('zoomed');
+  };
+
+  // ===== FAQ ACCORDION =====
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
+  }
+
+  // ===== GALLERY SLIDER =====
+  let galPos = 0;
+  function slideGallery(dir) {
+    const track = document.getElementById('galTrack');
+    const items = track.querySelectorAll('.gallery-item');
+    const viewport = document.getElementById('galViewport');
+    const itemW = items[0].offsetWidth + (window.innerWidth < 900 ? 24 : 32); // Responsive gap
+    const max = (items.length * itemW) - viewport.offsetWidth;
+    
+    galPos += dir * itemW;
+    if (galPos > max) galPos = 0; // Loop to start
+    if (galPos < 0) galPos = max; // Loop to end
+    
+    track.style.transform = `translateX(-${galPos}px)`;
+  }
+  
+  // Auto-slide Gallery
+  let galInterval = setInterval(() => slideGallery(1), 3000);
+  document.getElementById('gallery').addEventListener('mouseenter', () => clearInterval(galInterval));
+  document.getElementById('gallery').addEventListener('mouseleave', () => galInterval = setInterval(() => slideGallery(1), 3000));
+
+  // ===== REVIEWS SLIDER =====
+  let reviewPos = 0;
+  function slideReviews(dir) {
+    const track = document.getElementById('reviewsTrack');
+    const cards = track.querySelectorAll('.review-card');
+    const cardW = cards[0].offsetWidth + 24;
+    const max = (cards.length - 1) * cardW;
+    reviewPos = Math.max(0, Math.min(reviewPos + dir * cardW, max - cardW));
+    track.style.transform = `translateX(-${reviewPos}px)`;
+  }
+
+  // ===== MAGNETIC BUTTONS =====
+  document.querySelectorAll('.btn-primary, .btn-outline, .nav-cta').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = `translate(0, 0)`;
+    });
+  });
+</script>
+</body>
+</html>

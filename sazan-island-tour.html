@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sazan Island & Karaburun Peninsula – Blue Bay Tours</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pearl: #FFFFFF;
+    --navy: #0077B6;
+    --gold: #C5A028;
+    --gold-light: #E0C158;
+    --white: #FFFFFF;
+    --black: #000000;
+    --white-dim: rgba(0, 0, 0, 0.7);
+    --font-main: 'Outfit', sans-serif;
+    --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+  
+  header { padding: 2rem 0; display: flex; align-items: center; justify-content: space-between; }
+  .back-link { text-decoration: none; color: var(--gold); font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; transition: transform 0.3s; }
+  .back-link:hover { transform: translateX(-5px); }
+  
+  .tour-hero { padding: 4rem 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+  .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 700; color: var(--navy); }
+  .hero-meta { display: flex; gap: 2rem; margin-bottom: 2rem; }
+  .meta-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; font-weight: 600; color: var(--gold); }
+  .hero-img { width: 100%; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  
+  .tour-section { padding: 5rem 0; border-top: 1px solid rgba(0,0,0,0.05); }
+  .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--gold); }
+  
+  /* ===== REVEAL ANIMATIONS ===== */
+  .js-enabled .reveal {
+    opacity: 0;
+    will-change: transform, opacity, filter, clip-path;
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js-enabled .reveal-up { transform: translateY(50px); }
+  .js-enabled .reveal-left { transform: translateX(-50px); }
+  .js-enabled .reveal-right { transform: translateX(50px); }
+  .js-enabled .reveal-scale { transform: scale(0.95); }
+  .js-enabled .reveal-blur { filter: blur(8px); }
+  
+  /* Mask Reveal */
+  .mask-wrap { overflow: hidden; display: block; }
+  .js-enabled .reveal-mask { transform: translateY(100%); }
+  
+  /* Image Reveal */
+  .js-enabled .reveal-clip { clip-path: inset(100% 0 0 0); }
+  
+  .reveal.visible {
+    opacity: 1 !important;
+    transform: translate(0) scale(1) !important;
+    filter: blur(0) !important;
+    clip-path: inset(0 0 0 0) !important;
+  }
+  
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .float-anim { animation: float 5s ease-in-out infinite; }
+  
+  .itinerary { display: flex; flex-direction: column; gap: 2rem; }
+  .itinerary-item { display: flex; gap: 2rem; position: relative; }
+  .itinerary-item::before { content: ''; position: absolute; left: 24px; top: 50px; bottom: -30px; width: 2px; background: rgba(197, 160, 40, 0.2); }
+  .itinerary-item:last-child::before { display: none; }
+  .itinerary-icon { width: 50px; height: 50px; background: var(--white); color: var(--gold); border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; z-index: 2; }
+  .itinerary-text h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
+  .itinerary-text p { color: var(--white-dim); font-size: 0.95rem; }
+  
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+  .info-card { background: #F8F9FA; padding: 2rem; border-radius: 4px; border-left: 4px solid var(--gold); }
+  .info-card h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.5rem; }
+  .info-card p { font-size: 1.1rem; font-weight: 600; }
+  
+  .booking-box { background: var(--white); color: var(--navy); padding: 4rem; border-radius: 4px; text-align: center; margin-top: 4rem; border: 1px solid var(--gold); }
+  .booking-box h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+  .booking-box p { color: var(--white-dim); margin-bottom: 2rem; }
+  .btn-primary { background: var(--gold); color: var(--navy); text-decoration: none; padding: 1.2rem 3rem; border-radius: 2px; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; display: inline-block; transition: all var(--transition); }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(197, 160, 40, 0.3); }
+
+  @media (max-width: 900px) {
+    .tour-hero { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    .hero-meta { justify-content: center; }
+    .hero-content { order: 2; }
+    .hero-img-wrap { order: 1; }
+    .booking-box { padding: 3rem 2rem; }
+    .info-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <a href="bluebay.html" class="back-link">⚓ Back to Home</a>
+    <div style="font-weight: 700; font-size: 1.2rem;">Blue <span style="color: var(--gold);">Bay</span> Tours</div>
+  </header>
+
+  <section class="tour-hero">
+    <div class="hero-content">
+      <div class="mask-wrap">
+        <h1 class="reveal reveal-mask">Sazan Island &<br>Karaburun Peninsula</h1>
+      </div>
+      <div class="hero-meta reveal reveal-up reveal-delay-1">
+        <div class="meta-item">🕒 5 Hours</div>
+        <div class="meta-item">👥 Max 10 Persons</div>
+      </div>
+      <p class="reveal reveal-up reveal-delay-2" style="font-size: 1.1rem; color: var(--white-dim); margin-bottom: 2.5rem;">Explore the mysterious Sazan Island and the hidden gems of the Karaburun coast. From military history to crystal-clear waters, this tour offers a complete Mediterranean experience.</p>
+      <a href="#book" class="btn-primary reveal reveal-up reveal-delay-3">Book This Tour</a>
+    </div>
+    <div class="hero-img-wrap reveal reveal-clip">
+      <img src="tour2 display pic.jpeg" alt="Sazan Island" class="hero-img">
+    </div>
+  </section>
+
+  <section class="tour-section">
+    <div class="mask-wrap">
+      <h2 class="section-title reveal reveal-mask">What You'll Experience</h2>
+    </div>
+    <div class="itinerary reveal-grid">
+      <div class="itinerary-item reveal reveal-up">
+        <div class="itinerary-icon">🏝️</div>
+        <div class="itinerary-text">
+          <h3>Visit to Sazan Island</h3>
+          <p>A 30-minute stop at St. Nicholas Beach. Explore the island's unique atmosphere and swim in its clear waters. Along the way, we'll also visit Gjeneralit Beach on Sazan Island.</p>
+        </div>
+      </div>
+      <div class="itinerary-item reveal reveal-up">
+        <div class="itinerary-icon">☠️</div>
+        <div class="itinerary-text">
+          <h3>Haxhi Ali Cave</h3>
+          <p>A 15-minute visit inside the legendary Pirate's Cave. We stop for photos and videos in this natural wonder.</p>
+        </div>
+      </div>
+      <div class="itinerary-item reveal reveal-up">
+        <div class="itinerary-icon">🌊</div>
+        <div class="itinerary-text">
+          <h3>Coastal Exploration</h3>
+          <p>Cruise past virgin beaches along the route with multiple stops for photos. We'll stop at Shën Jan and Shën Vasil beaches for more scenic views.</p>
+        </div>
+      </div>
+      <div class="itinerary-item reveal reveal-up">
+        <div class="itinerary-icon">🏖️</div>
+        <div class="itinerary-text">
+          <h3>Final Destination: Zhanpovel Beach</h3>
+          <p>The ultimate relaxation stop. Enjoy the umbrellas, sunbeds, and a grill bar serving traditional food with fresh meat and seafood.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tour-section">
+    <h2 class="section-title">Tour Details</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h4>Departure Times</h4>
+        <p>Morning: 09:00 – 14:00</p>
+        <p>Afternoon: 15:00 – 19:00</p>
+      </div>
+      <div class="info-card">
+        <h4>Navigation Time</h4>
+        <p>~2 Hours 30 Mins</p>
+      </div>
+      <div class="info-card">
+        <h4>Included</h4>
+        <p>Natural Drinking Water</p>
+        <p>Snorkeling Masks</p>
+      </div>
+      <div class="info-card">
+        <h4>Private Boat</h4>
+        <p>Your own captain</p>
+        <p>Exclusive experience</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-box reveal" id="book" style="text-align: center; max-width: 800px; margin: 4rem auto;">
+    <span class="section-label">Book Your Trip</span>
+    <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--navy); margin-bottom: 1rem;">Ready for Adventure?</h2>
+    <p style="color: var(--white-dim); font-size: 1.1rem; margin-bottom: 3rem;">Message us on WhatsApp to check availability and book your private tour instantly. Our team is ready to assist you.</p>
+    <a href="https://wa.me/355692242662?text=I'm%20interested%20in%20the%20Sazan%20Island%20Tour" target="_blank" class="btn-primary" style="padding: 1.2rem 3rem; border-radius: 50px; font-size: 1rem; box-shadow: 0 10px 30px rgba(197, 160, 40, 0.3);">Chat on WhatsApp ⚓</a>
+  </section>
+
+  <footer style="padding: 5rem 0; text-align: center; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 4rem;">
+    <div style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem;">Blue <span style="color: var(--gold);">Bay</span> Tours</div>
+    <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 2rem;">Vlorë, Albania · Private Boat Tours</p>
+    <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+      <a href="bluebay.html#about" style="color: var(--navy); text-decoration: none; font-size: 0.85rem; font-weight: 600;">About</a>
+      <a href="bluebay.html#tours" style="color: var(--navy); text-decoration: none; font-size: 0.85rem; font-weight: 600;">Tours</a>
+      <a href="bluebay.html#contact" style="color: var(--navy); text-decoration: none; font-size: 0.85rem; font-weight: 600;">Contact</a>
+    </div>
+    <p style="color: var(--white-dim); font-size: 0.8rem;">&copy; 2026 Blue Bay Tours – Vlorë, Albania</p>
+  </footer>
+</div>
+
+<script>
+  // ===== REVEAL ON SCROLL =====
+  document.documentElement.classList.add('js-enabled');
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        revealElement(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  function revealElement(el) {
+    el.classList.add('visible');
+    if (el.classList.contains('reveal-grid')) {
+      Array.from(el.children).forEach((child, i) => {
+        setTimeout(() => {
+          child.classList.add('visible');
+          child.style.opacity = '1';
+          child.style.transform = 'translate(0) scale(1)';
+          child.style.clipPath = 'inset(0 0 0 0)';
+        }, i * 150);
+      });
+    }
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      revealElement(el);
+    } else {
+      io.observe(el);
+    }
+  });
+</script>
+
+</body>
+</html>
