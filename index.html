@@ -1065,8 +1065,8 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg" id="heroBg">
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="hero video.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline webkit-playsinline poster="tour2 gallerry.jpeg" class="hero-video">
+      <source src="hero-video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
   </div>
@@ -1521,6 +1521,15 @@
   // Loader removed
 
 
+
+  // Force Play Hero Video for Mobile
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.play().catch(() => {
+      document.body.addEventListener('click', () => heroVideo.play(), { once: true });
+      document.body.addEventListener('touchstart', () => heroVideo.play(), { once: true });
+    });
+  }
 
   // ===== NAVBAR & MOBILE =====
   const navbar = document.getElementById('navbar');
