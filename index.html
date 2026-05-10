@@ -39,30 +39,7 @@
     line-height: 1.6;
   }
 
-  /* ===== CUSTOM CURSOR ===== */
-  .cursor {
-    position: fixed;
-    width: 12px; height: 12px;
-    background: var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
-    mix-blend-mode: difference;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 36px; height: 36px;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
-    opacity: 0.5;
-  }
-  body:hover .cursor, body:hover .cursor-ring { opacity: 1; }
+
 
   /* ===== LOADER REMOVED ===== */
 
@@ -1048,9 +1025,7 @@
 
 <!-- Loader Removed -->
 
-<!-- Custom Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
@@ -1532,13 +1507,7 @@
 <script>
   // Loader removed
 
-  // ===== CURSOR =====
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-  function animateRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateRing); }
-  animateRing();
+
 
   // ===== NAVBAR & MOBILE =====
   const navbar = document.getElementById('navbar');
