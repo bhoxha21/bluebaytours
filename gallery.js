@@ -51,7 +51,7 @@ function populateIndexGallery() {
 
   allImages.forEach((imgObj, idx) => {
     const div = document.createElement('div');
-    div.className = `gallery-item reveal reveal-scale reveal-delay-${(idx % 5) + 1}`;
+    div.className = `gallery-item`;
     div.setAttribute('onclick', 'openLightbox(this)');
     
     const img = document.createElement('img');
@@ -121,7 +121,7 @@ function populateTourGallery() {
 
   data.images.forEach((imgName, idx) => {
     const div = document.createElement('div');
-    div.className = `gallery-item reveal reveal-scale reveal-delay-${(idx % 5) + 1}`;
+    div.className = `gallery-item`;
     div.setAttribute('onclick', 'openLightbox(this)');
     
     const img = document.createElement('img');
