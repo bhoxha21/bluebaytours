@@ -138,7 +138,7 @@
       <p class="reveal reveal-up reveal-delay-2" style="font-size: 1.1rem; color: var(--white-dim); margin-bottom: 2.5rem;">Experience the magical Albanian sunset from the best seat in the house. A private, comfortable, and unforgettable evening voyage into the golden hour of the Ionian Sea.</p>
       <a href="#book" class="btn-primary reveal reveal-up reveal-delay-3">Book This Tour</a>
     </div>
-    <div class="hero-img-wrap reveal reveal-clip">
+    <div class="hero-img-wrap reveal reveal-clip" data-tour-id="sunset">
       <img src="sunset.jpeg" alt="Sunset Boat Tour" class="hero-img">
     </div>
   </section>
@@ -212,6 +212,16 @@
     </div>
   </section>
 
+  <!-- DYNAMIC GALLERY SECTION -->
+  <section class="tour-section" id="tour-specific-gallery" data-tour-id="sunset">
+    <div class="mask-wrap">
+      <h2 class="section-title reveal reveal-mask">Tour Gallery</h2>
+    </div>
+    <div class="tour-gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
+      <!-- Images will be injected here by gallery.js -->
+    </div>
+  </section>
+
   <section class="booking-box reveal" id="book" style="text-align: center; max-width: 800px; margin: 4rem auto;">
     <span class="section-label">Book Your Trip</span>
     <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--navy); margin-bottom: 1rem;">Ready for the Golden Hour?</h2>
@@ -267,6 +277,10 @@
     }
   });
 </script>
+
+<!-- Dynamic Gallery Scripts -->
+<script src="gallery-config.js"></script>
+<script src="gallery.js"></script>
 
 </body>
 </html>

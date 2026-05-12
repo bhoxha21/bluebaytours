@@ -112,7 +112,7 @@
       <p class="reveal reveal-up" style="font-size: 1.1rem; color: var(--white-dim); margin-bottom: 2.5rem;">The ultimate Karaburun adventure. Visit over 12 locations including the historic Grama Bay, ancient inscriptions, and the mesmerizing Blue Cave.</p>
       <a href="#book" class="btn-primary reveal reveal-up">Book This Tour</a>
     </div>
-    <div class="hero-img-wrap reveal reveal-clip">
+    <div class="hero-img-wrap reveal reveal-clip" data-tour-id="grama">
       <img src="tour4.jpeg" alt="Grama Bay" class="hero-img">
     </div>
   </section>
@@ -162,6 +162,16 @@
         <h4>Pricing</h4>
         <p>€700 Private / €65 Group</p>
       </div>
+    </div>
+  </section>
+
+  <!-- DYNAMIC GALLERY SECTION -->
+  <section class="tour-section" id="tour-specific-gallery" data-tour-id="grama">
+    <div class="mask-wrap">
+      <h2 class="section-title reveal reveal-mask">Tour Gallery</h2>
+    </div>
+    <div class="tour-gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
+      <!-- Images will be injected here by gallery.js -->
     </div>
   </section>
 
@@ -215,6 +225,10 @@
     else io.observe(el);
   });
 </script>
+
+<!-- Dynamic Gallery Scripts -->
+<script src="gallery-config.js"></script>
+<script src="gallery.js"></script>
 
 </body>
 </html>

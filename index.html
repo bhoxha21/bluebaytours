@@ -14,13 +14,13 @@
   :root {
     --pearl: #FFFFFF;
     --sand: #FFFFFF;
-    --navy: #0077B6;
+    --navy: #001F3F;
     --gold: #C5A028;
     --gold-light: #E0C158;
     --white: #FFFFFF;
     --black: #000000;
     --white-dim: rgba(0, 0, 0, 0.7);
-    --navy-dim: rgba(0, 119, 182, 0.8);
+    --navy-dim: rgba(0, 31, 63, 0.8);
     --glass: rgba(255, 255, 255, 0.95);
     --glass-border: rgba(197, 160, 40, 0.3);
     --font-main: 'Outfit', sans-serif;
@@ -1068,17 +1068,22 @@
     <video autoplay muted loop playsinline webkit-playsinline poster="tour2 gallerry.jpeg" class="hero-video">
       <source src="hero-video.mp4" type="video/mp4">
     </video>
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" style="background: rgba(0, 31, 63, 0.6);"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-badge reveal reveal-up reveal-blur">⭐ 5.0 Rated (106 Reviews)</div>
     <div class="mask-wrap">
-      <h1 class="hero-title reveal reveal-mask">The Most Exclusive Way<br>to See the <em>Riviera</em>.</h1>
+      <h1 class="hero-title reveal reveal-mask" style="font-size: clamp(2.5rem, 6vw, 5.5rem);">Private Boat Tours<br>in <em>Vlora</em></h1>
     </div>
-    <p class="hero-sub reveal reveal-up reveal-delay-2">Private boat tours into the wild turquoise of the Ionian Sea.<br>Discover hidden caves, untouched beaches, and the legendary Karaburun Peninsula.</p>
-    <div class="hero-btns reveal reveal-up reveal-delay-3">
-      <a href="#tours" class="btn-primary">Explore Tours ⚓</a>
-      <a href="#contact" class="btn-outline">Book Now</a>
+    <p class="hero-sub reveal reveal-up reveal-delay-2" style="font-size: 1.15rem; max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.5;">Explore Karaburun, Sazan Island & Hidden Beaches</p>
+    <ul class="hero-checklist reveal reveal-up reveal-delay-3" style="list-style: none; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; margin-bottom: 2.5rem; color: white; font-weight: 500; font-size: 1.05rem; letter-spacing: 0.05em;">
+      <li><span style="color: #25D366;">✅</span> Private Tours</li>
+      <li><span style="color: #25D366;">✅</span> Small Groups</li>
+      <li><span style="color: #25D366;">✅</span> Snorkeling Included 🤿</li>
+      <li><span style="color: #25D366;">✅</span> Local Experienced Captain</li>
+    </ul>
+    <div class="hero-btns reveal reveal-up reveal-delay-4">
+      <a href="https://wa.me/355692242662" class="btn-primary" style="background: #25D366; color: white; border: none; box-shadow: 0 10px 20px rgba(37,211,102,0.2);">Book on WhatsApp</a>
+      <a href="#tours" class="btn-outline" style="background: rgba(255,255,255,0.1);">View Tours</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -1093,25 +1098,32 @@
     <div class="about-grid">
 
       <div class="about-text">
-        <span class="section-label reveal reveal-left">The Blue Bay Story</span>
+        <span class="section-label reveal reveal-left">About Us</span>
         <div class="mask-wrap">
-          <h2 class="section-title reveal reveal-mask">Crafting <em>Memories</em><br>on the Water Since 2012</h2>
+          <h2 class="section-title reveal reveal-mask">Premium <em>Private Experiences</em></h2>
         </div>
-        <p class="reveal reveal-up reveal-delay-1">What started as a single small boat and a passion for the sea has grown into Vlorë's most trusted private boat tour service.</p>
-        <p class="reveal reveal-delay-2">Your captain Gary brings a personal touch to every journey — with fluent English, local knowledge, and a genuine passion for the sea. You'll discover hidden coves, swim in crystalline waters, and experience Albania's wild coast away from the crowds.</p>
-        <p class="reveal reveal-delay-2">From the mythical Haxhi Ali Pirate's Cave to the military secrets of Sazan Island — every tour is a story waiting to be told.</p>
-        <div class="about-stats reveal reveal-delay-3">
-          <div>
-            <span class="stat-num">106</span>
-            <span class="stat-label">5-Star Reviews</span>
+        <p class="reveal reveal-up reveal-delay-1" style="font-size: 1.1rem; max-width: 650px; margin: 0 auto; color: var(--navy);">Blue Bay Tours offers private speedboat experiences in the Bay of Vlora. Discover hidden beaches, caves and crystal waters with fast, comfortable RIB tours guided by local captains.</p>
+        
+        <div class="about-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; text-align: left; margin-top: 4rem; max-width: 700px; margin-left: auto; margin-right: auto; padding-top: 2.5rem; border-top: 1px solid var(--glass-border);">
+          <div class="reveal reveal-up" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">👥</div>
+            <h4 style="color: var(--navy); font-size: 1.1rem; font-weight: 600;">Max 10 Persons</h4>
+            <p style="color: var(--white-dim); font-size: 0.85rem; line-height: 1.6;">Intimate groups for a personalized journey.</p>
           </div>
-          <div>
-            <span class="stat-num">10</span>
-            <span class="stat-label">Max Guests</span>
+          <div class="reveal reveal-up reveal-delay-1" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">⭐</div>
+            <h4 style="color: var(--navy); font-size: 1.1rem; font-weight: 600;">Local Experience</h4>
+            <p style="color: var(--white-dim); font-size: 0.85rem; line-height: 1.6;">Guided by captains who know every hidden gem.</p>
           </div>
-          <div>
-            <span class="stat-num">2</span>
-            <span class="stat-label">Unique Routes</span>
+          <div class="reveal reveal-up reveal-delay-2" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🛡️</div>
+            <h4 style="color: var(--navy); font-size: 1.1rem; font-weight: 600;">Top Safety</h4>
+            <p style="color: var(--white-dim); font-size: 0.85rem; line-height: 1.6;">Modern equipment and experienced crew.</p>
+          </div>
+          <div class="reveal reveal-up reveal-delay-3" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🛥️</div>
+            <h4 style="color: var(--navy); font-size: 1.1rem; font-weight: 600;">Ultimate Comfort</h4>
+            <p style="color: var(--white-dim); font-size: 0.85rem; line-height: 1.6;">Fast, spacious RIB boats designed for relaxation.</p>
           </div>
         </div>
       </div>
@@ -1139,139 +1151,189 @@
 
     <div class="tours-grid">
       <!-- Tour 1 -->
-      <div class="tour-card reveal reveal-up">
+      <div class="tour-card reveal reveal-up" data-tour-id="haxhi-ali">
         <div class="tour-img-wrap" onclick="location.href='haxhi-ali-tour.html'">
           <img src="tour1 display pic.jpeg" alt="Haxhi Ali Cave & Karaburun Peninsula" class="reveal-clip reveal">
           <div class="tour-overlay">
             <span>View Tour Details ⚓</span>
           </div>
-          <div class="tour-badge">4 Hours</div>
         </div>
         <div class="tour-info" style="padding: 2rem;">
-          <h3 class="tour-title">Haxhi Ali Cave &<br>Karaburun Peninsula</h3>
-          <p class="tour-desc">A perfect half-day escape to the legendary Pirate's Cave and the pristine shores of Karaburun.</p>
-          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">📍</span> Haxhi Ali Cave (15 min stop)</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🏖️</span> Shën Vasil & Shën Jan Beaches</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🔥</span> Final Stop: Zhanpovel Beach (2 hrs)</li>
-          </ul>
-          <div class="tour-footer">
-            <div class="tour-inclusions">
-              <span title="Drinking Water">💧</span>
-              <span title="Snorkeling Mask">🤿</span>
-            </div>
-            <a href="haxhi-ali-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          <h3 class="tour-title" style="color: var(--navy); font-weight: 600; font-size: 1.4rem;">Haxhi Ali Cave & Karaburun</h3>
+          
+          <div class="tour-meta" style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--navy-dim); margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+            <span>⏱️ 4 Hours</span>
+            <span>🕒 Daily (Flexible)</span>
           </div>
+          
+          <div class="tour-highlights" style="margin-bottom: 1.5rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">Highlights</p>
+            <ul style="list-style: none; font-size: 0.9rem; color: var(--white-dim); display: flex; flex-direction: column; gap: 0.5rem;">
+              <li>✓ Haxhi Ali Pirate Cave</li>
+              <li>✓ Shën Vasil & Shën Jan Beaches</li>
+              <li>✓ Zhanpovel Beach Stop</li>
+            </ul>
+          </div>
+          
+          <div class="tour-includes" style="margin-bottom: 2rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">What's Included</p>
+            <div style="display: flex; gap: 0.8rem; font-size: 1.2rem;">
+               <span title="Drinking Water">💧</span>
+               <span title="Snorkeling Mask">🤿</span>
+            </div>
+          </div>
+
+          <a href="haxhi-ali-tour.html" class="btn-primary" style="display: block; text-align: center; width: 100%;">View Details</a>
         </div>
       </div>
 
       <!-- Tour 2 -->
-      <div class="tour-card reveal reveal-up">
+      <div class="tour-card reveal reveal-up" data-tour-id="sazan">
         <div class="tour-img-wrap" onclick="location.href='sazan-island-tour.html'">
           <img src="tour2 display pic.jpeg" alt="Sazan Island & Karaburun Peninsula" class="reveal-clip reveal">
           <div class="tour-overlay">
             <span>View Tour Details ⚓</span>
           </div>
-          <div class="tour-badge">5 Hours</div>
         </div>
         <div class="tour-info" style="padding: 2rem;">
-          <h3 class="tour-title">Sazan Island &<br>Karaburun Peninsula</h3>
-          <p class="tour-desc">Explore the mysterious Sazan Island and the hidden gems of the Karaburun coast.</p>
-          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🏝️</span> Sazan Island (St. Nicholas Beach)</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🕳️</span> Haxhi Ali Cave (15 min stop)</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🌊</span> Gjeneralit, Shën Jan & Vasil Beaches</li>
-          </ul>
-          <div class="tour-footer">
-            <div class="tour-inclusions">
-              <span title="Drinking Water">💧</span>
-              <span title="Snorkeling Mask">🤿</span>
-            </div>
-            <a href="sazan-island-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          <h3 class="tour-title" style="color: var(--navy); font-weight: 600; font-size: 1.4rem;">Sazan Island & Karaburun</h3>
+          
+          <div class="tour-meta" style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--navy-dim); margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+            <span>⏱️ 5 Hours</span>
+            <span>🕒 Daily (Flexible)</span>
           </div>
+          
+          <div class="tour-highlights" style="margin-bottom: 1.5rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">Highlights</p>
+            <ul style="list-style: none; font-size: 0.9rem; color: var(--white-dim); display: flex; flex-direction: column; gap: 0.5rem;">
+              <li>✓ Sazan Island (St. Nicholas Beach)</li>
+              <li>✓ Haxhi Ali Cave</li>
+              <li>✓ Karaburun Wild Beaches</li>
+            </ul>
+          </div>
+          
+          <div class="tour-includes" style="margin-bottom: 2rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">What's Included</p>
+            <div style="display: flex; gap: 0.8rem; font-size: 1.2rem;">
+               <span title="Drinking Water">💧</span>
+               <span title="Snorkeling Mask">🤿</span>
+            </div>
+          </div>
+
+          <a href="sazan-island-tour.html" class="btn-primary" style="display: block; text-align: center; width: 100%;">View Details</a>
         </div>
       </div>
 
       <!-- Tour 3 -->
-      <div class="tour-card reveal reveal-up">
+      <div class="tour-card reveal reveal-up" data-tour-id="dafina">
         <div class="tour-img-wrap" onclick="location.href='dafina-bay-tour.html'">
           <img src="tour1 gallery.jpeg" alt="Dafina Bay & Karaburun Peninsula" class="reveal-clip reveal">
           <div class="tour-overlay">
             <span>View Tour Details ⚓</span>
           </div>
-          <div class="tour-badge">6 Hours</div>
         </div>
         <div class="tour-info" style="padding: 2rem;">
-          <h3 class="tour-title">Dafina Bay &<br>Karaburun Peninsula</h3>
-          <p class="tour-desc">A deep dive into the most secluded bays of the peninsula, including the magical Dafina Bay.</p>
-          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">💎</span> Dafina Bay (1 hour stop)</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🛶</span> Varka Bay & Secret Caves</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">👥</span> Capacity: Max 10 Persons</li>
-          </ul>
-          <div class="tour-footer">
-            <div class="tour-inclusions">
-              <span title="Drinking Water">💧</span>
-              <span title="Snorkeling Mask">🤿</span>
-            </div>
-            <a href="dafina-bay-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          <h3 class="tour-title" style="color: var(--navy); font-weight: 600; font-size: 1.4rem;">Dafina Bay & Karaburun</h3>
+          
+          <div class="tour-meta" style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--navy-dim); margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+            <span>⏱️ 6 Hours</span>
+            <span>🕒 Daily (Flexible)</span>
           </div>
+          
+          <div class="tour-highlights" style="margin-bottom: 1.5rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">Highlights</p>
+            <ul style="list-style: none; font-size: 0.9rem; color: var(--white-dim); display: flex; flex-direction: column; gap: 0.5rem;">
+              <li>✓ Magical Dafina Bay</li>
+              <li>✓ Varka Bay & Secret Caves</li>
+              <li>✓ Ultimate Seclusion</li>
+            </ul>
+          </div>
+          
+          <div class="tour-includes" style="margin-bottom: 2rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">What's Included</p>
+            <div style="display: flex; gap: 0.8rem; font-size: 1.2rem;">
+               <span title="Drinking Water">💧</span>
+               <span title="Snorkeling Mask">🤿</span>
+            </div>
+          </div>
+
+          <a href="dafina-bay-tour.html" class="btn-primary" style="display: block; text-align: center; width: 100%;">View Details</a>
         </div>
       </div>
 
       <!-- Tour 4 -->
-      <div class="tour-card reveal reveal-up">
+      <div class="tour-card reveal reveal-up" data-tour-id="grama">
         <div class="tour-img-wrap" onclick="location.href='grama-bay-tour.html'">
           <img src="tour2 gallerry.jpeg" alt="Grama Bay Full Trip" class="reveal-clip reveal">
           <div class="tour-overlay">
             <span>View Tour Details ⚓</span>
           </div>
-          <div class="tour-badge">7 Hours</div>
         </div>
         <div class="tour-info" style="padding: 2rem;">
-          <h3 class="tour-title">Grama Bay &<br>Karaburun Full Trip</h3>
-          <p class="tour-desc">The ultimate adventure. Visit 12+ locations including the historic Grama Bay and Blue Cave.</p>
-          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🏛️</span> Grama Bay (2-hour stop)</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🔵</span> Blue Cave (30 min stop)</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">💶</span> €700 Private / €65 Group</li>
-          </ul>
-          <div class="tour-footer">
-            <div class="tour-inclusions">
-              <span title="Drinking Water">💧</span>
-              <span title="Soft Drinks">🥤</span>
-              <span title="Sandwich">🥪</span>
-              <span title="Snorkeling Mask">🤿</span>
-            </div>
-            <a href="grama-bay-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          <h3 class="tour-title" style="color: var(--navy); font-weight: 600; font-size: 1.4rem;">Grama Bay Full Trip</h3>
+          
+          <div class="tour-meta" style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--navy-dim); margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+            <span>⏱️ 7 Hours</span>
+            <span>🕒 Daily (Flexible)</span>
           </div>
+          
+          <div class="tour-highlights" style="margin-bottom: 1.5rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">Highlights</p>
+            <ul style="list-style: none; font-size: 0.9rem; color: var(--white-dim); display: flex; flex-direction: column; gap: 0.5rem;">
+              <li>✓ Historic Grama Bay</li>
+              <li>✓ Blue Cave</li>
+              <li>✓ 12+ Pristine Locations</li>
+            </ul>
+          </div>
+          
+          <div class="tour-includes" style="margin-bottom: 2rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">What's Included</p>
+            <div style="display: flex; gap: 0.8rem; font-size: 1.2rem;">
+               <span title="Drinking Water">💧</span>
+               <span title="Soft Drinks">🥤</span>
+               <span title="Sandwich">🥪</span>
+               <span title="Snorkeling Mask">🤿</span>
+            </div>
+          </div>
+
+          <a href="grama-bay-tour.html" class="btn-primary" style="display: block; text-align: center; width: 100%;">View Details</a>
         </div>
       </div>
 
       <!-- Tour 5 (Sunset) -->
-      <div class="tour-card reveal reveal-up">
+      <div class="tour-card reveal reveal-up" data-tour-id="sunset">
         <div class="tour-img-wrap" onclick="location.href='sunset-tour.html'">
           <img src="sunset.jpeg" alt="Sunset Boat Tour" class="reveal-clip reveal">
           <div class="tour-overlay">
             <span>View Tour Details ⚓</span>
           </div>
-          <div class="tour-badge">2 Hours</div>
         </div>
         <div class="tour-info" style="padding: 2rem;">
-          <h3 class="tour-title">Sunset Boat Tour</h3>
-          <p class="tour-desc">Experience the magical Golden Hour in the open sea. A romantic and peaceful evening escape.</p>
-          <ul class="tour-features" style="list-style: none; margin-bottom: 1.5rem;">
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🌅</span> Golden Hour Open Sea Stop</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">☠️</span> Haxhi Ali Cave (15 min)</li>
-            <li><span style="color: var(--gold); margin-right: 0.5rem;">🍹</span> Aperol Spritz & Water Included</li>
-          </ul>
-          <div class="tour-footer">
-            <div class="tour-inclusions">
-              <span title="Drinking Water">💧</span>
-              <span title="Aperol Spritz">🍹</span>
-            </div>
-            <a href="sunset-tour.html" class="btn-primary" style="font-size: 0.7rem; padding: 0.6rem 1.2rem;">View Details</a>
+          <h3 class="tour-title" style="color: var(--navy); font-weight: 600; font-size: 1.4rem;">Sunset Boat Tour</h3>
+          
+          <div class="tour-meta" style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--navy-dim); margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem;">
+            <span>⏱️ 2 Hours</span>
+            <span>🕒 Evening (Pre-Sunset)</span>
           </div>
+          
+          <div class="tour-highlights" style="margin-bottom: 1.5rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">Highlights</p>
+            <ul style="list-style: none; font-size: 0.9rem; color: var(--white-dim); display: flex; flex-direction: column; gap: 0.5rem;">
+              <li>✓ Golden Hour Open Sea</li>
+              <li>✓ Romantic Atmosphere</li>
+              <li>✓ Haxhi Ali Cave (Optional)</li>
+            </ul>
+          </div>
+          
+          <div class="tour-includes" style="margin-bottom: 2rem;">
+            <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;">What's Included</p>
+            <div style="display: flex; gap: 0.8rem; font-size: 1.2rem;">
+               <span title="Drinking Water">💧</span>
+               <span title="Aperol Spritz">🍹</span>
+            </div>
+          </div>
+
+          <a href="sunset-tour.html" class="btn-primary" style="display: block; text-align: center; width: 100%;">View Details</a>
         </div>
       </div>
     </div>
@@ -1677,5 +1739,10 @@
     });
   });
 </script>
+
+<!-- Dynamic Gallery Scripts -->
+<script src="gallery-config.js"></script>
+<script src="gallery.js"></script>
+
 </body>
 </html>
