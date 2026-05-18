@@ -790,8 +790,9 @@
   /* Footer Socials */
   .footer-socials {
     display: flex;
-    gap: 2rem;
-    margin-top: 1.5rem;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
   }
   .social-item {
     display: flex;
@@ -800,21 +801,20 @@
     text-decoration: none;
     color: var(--navy);
     transition: transform 0.3s ease;
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
   .social-item:hover {
     transform: translateY(-5px);
   }
   .social-item img {
-    width: 38px;
+    width: 42px;
     height: auto;
   }
   .social-item span {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--navy);
   }
 
   #faq { background: var(--white); }
@@ -1569,7 +1569,7 @@
 <footer style="padding: 3rem 0 2rem; text-align: center; border-top: 1px solid rgba(0,0,0,0.05); margin-top: 4rem;">
   <div style="margin-bottom: 2rem;"><img src="logo.png" alt="Blue Bay Tours Logo" style="height: 180px; width: auto;"></div>
   
-  <div class="footer-socials" style="justify-content: center;">
+  <div class="footer-socials">
     <a href="https://wa.me/355692242662" target="_blank" class="social-item">
       <img src="icons8-whatsapp-96.png" alt="WhatsApp">
       <span>WhatsApp</span>
