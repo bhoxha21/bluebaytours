@@ -1,0 +1,147 @@
+/* 
+   Apple-Style Premium Slideshow Component
+   Aesthetics: Minimalist, Fluid, High-end
+*/
+
+:root {
+    --ss-border-radius: 1.5rem; /* rounded-2xl */
+    --ss-transition-speed: 0.8s; /* Snappier transition */
+    --ss-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    --ss-dot-size: 6px;
+    --ss-dot-active-width: 24px;
+}
+
+.apple-slideshow-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: var(--ss-border-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    margin: 2rem 0;
+    user-select: none;
+}
+
+.apple-slideshow-inner {
+    position: absolute;
+    inset: 0;
+}
+
+.apple-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--ss-transition-speed) var(--ss-easing);
+    overflow: hidden;
+}
+
+.apple-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.apple-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+}
+
+/* Ken Burns Effect */
+.apple-slide.active img {
+    animation: kenBurns 8s linear forwards;
+}
+
+@keyframes kenBurns {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+
+/* Minimalist Controls */
+.ss-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.apple-slideshow-container:hover .ss-nav-btn {
+    opacity: 0.6;
+}
+
+.ss-nav-btn:hover {
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.ss-prev { left: 1.5rem; }
+.ss-next { right: 1.5rem; }
+
+/* Indicators */
+.ss-indicators {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.6rem;
+    z-index: 10;
+}
+
+.ss-dot {
+    width: var(--ss-dot-size);
+    height: var(--ss-dot-size);
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.4s var(--ss-easing);
+}
+
+.ss-dot.active {
+    background: white;
+    width: var(--ss-dot-active-width);
+}
+
+/* Progress Bar (Alternative to dots if preferred) */
+.ss-progress-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 11;
+}
+
+.ss-progress-bar {
+    height: 100%;
+    background: var(--gold, #C5A028);
+    width: 0%;
+    transition: width linear;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .apple-slideshow-container {
+        aspect-ratio: 4 / 3; /* Better for mobile */
+        border-radius: 1rem;
+    }
+    .ss-nav-btn {
+        display: none; /* Hide arrows on small screens, use touch */
+    }
+}

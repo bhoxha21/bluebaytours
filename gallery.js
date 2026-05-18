@@ -133,38 +133,54 @@ function populateTourGallery() {
   });
 }
 
-// Dedicated slider logic for the tour pages
-let tourGalPos = 0;
-window.slideTourGallery = function(dir) {
-  const track = document.getElementById('tourGalTrack');
-  const items = track.querySelectorAll('.gallery-item');
-  const viewport = document.getElementById('tourGalViewport');
-  if(items.length === 0) return;
-
-  const itemW = items[0].offsetWidth + (window.innerWidth < 900 ? 24 : 32); // Responsive gap
-  const max = (items.length * itemW) - viewport.offsetWidth;
-  
-  tourGalPos += dir * itemW;
-  if (tourGalPos > max) tourGalPos = 0; // Loop to start
-  if (tourGalPos < 0) tourGalPos = max; // Loop to end
-  
   track.style.transform = `translateX(-${tourGalPos}px)`;
 };
 
-// Global Lightbox Logic (since it needs to work dynamically now)
+// Global Lightbox Logic (with navigation)
+let currentGalleryImages = [];
+let currentImageIndex = 0;
+
 window.openLightbox = function(el) {
   const lightbox = document.getElementById('lightbox') || createLightbox();
-  const imgSrc = el.querySelector('img').src;
-  const lbImg = lightbox.querySelector('img');
-  lbImg.src = imgSrc;
-  lbImg.classList.remove('zoomed');
+  
+  // Find all images in the same gallery
+  const track = el.closest('.gallery-track');
+  if (track) {
+    currentGalleryImages = Array.from(track.querySelectorAll('img')).map(img => img.src);
+    const clickedImg = el.querySelector('img').src;
+    currentImageIndex = currentGalleryImages.indexOf(clickedImg);
+  } else {
+    currentGalleryImages = [el.querySelector('img').src];
+    currentImageIndex = 0;
+  }
+
+  updateLightboxImage();
   lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+
+function updateLightboxImage() {
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  if (lbImg && currentGalleryImages[currentImageIndex]) {
+    lbImg.src = currentGalleryImages[currentImageIndex];
+    lbImg.classList.remove('zoomed');
+  }
+}
+
+window.changeLightboxImage = function(dir, e) {
+  if (e) e.stopPropagation();
+  currentImageIndex += dir;
+  if (currentImageIndex < 0) currentImageIndex = currentGalleryImages.length - 1;
+  if (currentImageIndex >= currentGalleryImages.length) currentImageIndex = 0;
+  updateLightboxImage();
 };
 
 window.closeLightbox = function() {
   const lightbox = document.getElementById('lightbox');
   if (lightbox) {
     lightbox.classList.remove('open');
+    document.body.style.overflow = '';
   }
 };
 
@@ -179,16 +195,42 @@ function createLightbox() {
   lb.className = 'lightbox';
   lb.setAttribute('onclick', 'closeLightbox()');
   
-  const btn = document.createElement('button');
-  btn.className = 'lightbox-close';
-  btn.innerText = '✕';
-  btn.setAttribute('onclick', 'closeLightbox()');
+  lb.innerHTML = `
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-nav prev" onclick="changeLightboxImage(-1, event)">&#10094;</button>
+    <img id="lightboxImg" onclick="toggleZoom(event)" src="" alt="">
+    <button class="lightbox-nav next" onclick="changeLightboxImage(1, event)">&#10095;</button>
+  `;
 
-  const img = document.createElement('img');
-  img.setAttribute('onclick', 'toggleZoom(event)');
-
-  lb.appendChild(btn);
-  lb.appendChild(img);
   document.body.appendChild(lb);
+  
+  // Add some basic styles for the new nav buttons if they don't exist
+  if (!document.getElementById('lightbox-nav-css')) {
+    const style = document.createElement('style');
+    style.id = 'lightbox-nav-css';
+    style.innerHTML = `
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.1);
+        border: none;
+        color: var(--navy);
+        font-size: 2rem;
+        padding: 1rem;
+        cursor: pointer;
+        z-index: 1001;
+        transition: background 0.3s;
+      }
+      .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+      .lightbox-nav.prev { left: 1rem; }
+      .lightbox-nav.next { right: 1rem; }
+      @media (max-width: 600px) {
+        .lightbox-nav { padding: 0.5rem; font-size: 1.5rem; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   return lb;
 }

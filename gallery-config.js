@@ -1,4 +1,4 @@
-const tourGalleries = {
+var tourGalleries = {
   "haxhi-ali": {
     "folder": "Haxhi Ali cave Karaburun peninsula",
     "displayPhoto": "display photo.jpeg",
