@@ -133,8 +133,22 @@ function populateTourGallery() {
   });
 }
 
+let tourGalPos = 0;
+window.slideTourGallery = function(dir) {
+  const track = document.getElementById('tourGalTrack');
+  const items = track ? track.querySelectorAll('.gallery-item') : [];
+  const viewport = document.getElementById('tourGalViewport');
+  if (!track || !items.length || !viewport) return;
+  const itemW = items[0].offsetWidth + (window.innerWidth < 900 ? 24 : 32); // Responsive gap
+  const max = (items.length * itemW) - viewport.offsetWidth;
+  
+  tourGalPos += dir * itemW;
+  if (tourGalPos > max) tourGalPos = 0; // Loop to start
+  if (tourGalPos < 0) tourGalPos = max; // Loop to end
+  
   track.style.transform = `translateX(-${tourGalPos}px)`;
 };
+
 
 // Global Lightbox Logic (with navigation)
 let currentGalleryImages = [];

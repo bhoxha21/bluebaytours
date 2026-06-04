@@ -1332,7 +1332,7 @@
       <!-- Tour 5 (Sunset) -->
       <div class="tour-card reveal reveal-up" data-tour-id="sunset">
         <div class="tour-img-wrap" onclick="location.href='sunset-tour.html'">
-          <img src="sunset.jpeg" alt="Sunset Boat Tour" class="reveal-clip reveal">
+          <img src="sunset/display photo sunset.jpeg" alt="Sunset Boat Tour" class="reveal-clip reveal">
           <div class="tour-overlay">
             <span>View Tour Details ⚓</span>
           </div>
@@ -1645,7 +1645,7 @@
         io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  }, { threshold: 0.01, rootMargin: '0px 0px -10px 0px' });
 
   function revealElement(el) {
     el.classList.add('visible');
